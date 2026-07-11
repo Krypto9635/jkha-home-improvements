@@ -1,0 +1,16 @@
+
+const menuButton=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.site-nav');
+if(menuButton&&nav){menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});}
+document.querySelectorAll('.nav-group-toggle').forEach(btn=>btn.addEventListener('click',()=>{const group=btn.closest('.nav-group');const open=group.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));}));
+const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+
+document.querySelectorAll('.faq-question').forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const isOpen=item.classList.toggle('open');
+    btn.setAttribute('aria-expanded',String(isOpen));
+  });
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.gallery-item').forEach(i=>i.classList.toggle('hidden',f!=='all'&&!i.dataset.category.includes(f)));});});
